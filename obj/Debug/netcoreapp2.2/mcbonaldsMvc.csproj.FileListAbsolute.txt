@@ -28,3 +28,5 @@ C:\Users\50539955833\Documents\mcbonaldsMvc\obj\Debug\netcoreapp2.2\mcbonaldsMvc
 C:\Users\50539955833\Documents\mcbonaldsMvc\obj\Debug\netcoreapp2.2\mcbonaldsMvc.dll
 C:\Users\50539955833\Documents\mcbonaldsMvc\obj\Debug\netcoreapp2.2\mcbonaldsMvc.pdb
 C:\Users\50539955833\Documents\mcbonaldsMvc\obj\Debug\netcoreapp2.2\mcbonaldsMvc.csproj.CopyComplete
+C:\Users\50539955833\Documents\mcbonaldsMvc\obj\Debug\netcoreapp2.2\Razor\Views\Cliente\Login.g.cshtml.cs
+C:\Users\50539955833\Documents\mcbonaldsMvc\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_HeaderHomePage.g.cshtml.cs

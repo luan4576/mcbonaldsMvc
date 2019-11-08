@@ -1,8 +1,3 @@
-﻿@{
-    var nomeView = (string) ViewData["NomeView"];
-}
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -11,19 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>McBonald's</title>
-    <!--favicon-->
     <link href="img/logo_simbolo.png" rel="icon" type="image/x-icon"/>
-    <!--importar fontes do google-->
-	<link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Londrina+Solid:900%7COpen+Sans" rel="stylesheet">
-    <!--importar folha css-->
-    <link href="~/css/style.css" rel="stylesheet" type="text/css">
-    @if(!"Home".Equals(nomeView))
-    {
-    <link href="~/css/style-secondary-pages.css" rel="stylesheet" type="text/css">
-    <link href="~/css/style-form-pages.css" rel="stylesheet" type="text/css">
-    }
-
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/style-secondary-pages.css" rel="stylesheet" type="text/css">
+    <link href="css/style-form-pages.css" rel="stylesheet" type="text/css">
     <!-- Importar o Font Awesome para o projeto -->
     <script src="https://kit.fontawesome.com/349a64cb04.js"></script>
 </head>
@@ -39,25 +27,43 @@
                             <i class="fa fa-bars"></i>
                         </a>
                     </li>
-                    <li class="bt-common-menu"><a onclick="toggleMobileMenu()" asp-controller="Home" asp-action="Index" class="active">Principal</a></li>
-                    <li class="bt-common-menu"><a onclick="toggleMobileMenu()" href='@Url.Action("Index", "Home")#hamburgueres'>Hamburgueres</a></li>
-                    <li class="bt-common-menu"><a onclick="toggleMobileMenu()" href='@Url.Action("Index", "Home")#shakes'>Shakes</a></li>
-                    <li class="bt-common-menu"><a onclick="toggleMobileMenu()" href='@Url.Action("Index", "Home")#historia'>História</a></li>
-                    <li class="bt-common-menu"><a onclick="toggleMobileMenu()" href='@Url.Action("Index", "Home")#local'>Local</a></li>
-                    <li class="bt-common-menu"><a onclick="toggleMobileMenu()"asp-controller="cliente" asp-action="Login" >login</a></li>           <li><a id="bt-peca_ja" href="pedidos.html">Peça já!</a></li>
+                    <li class="bt-common-menu"><a onclick="toggleMobileMenu()" href="index.html" class="active">Principal</a></li>
+                    <li class="bt-common-menu"><a onclick="toggleMobileMenu()" href="index.html#hamburgueres">Hamburgueres</a></li>
+                    <li class="bt-common-menu"><a onclick="toggleMobileMenu()" href="index.html#shakes">Shakes</a></li>
+                    <li class="bt-common-menu"><a onclick="toggleMobileMenu()" href="index.html#historia">História</a></li>
+                    <li class="bt-common-menu"><a onclick="toggleMobileMenu()" href="index.html#local">Local</a></li>
+                    <li class="bt-common-menu"><a onclick="toggleMobileMenu()" href="login.html">Login</a></li>
+                    <li><a id="bt-peca_ja" href="pedidos.html">Peça já!</a></li>
                 </ul>
             </div>
         </nav>
-        <!--comentario para eu nao esquecer de colocar aqui o logo area -->
-        @if("Home".Equals(nomeView))
-        {
-            Html.RenderPartial("_HeaderHomePage");
-        }
+        <hgroup>
+            <h1>McBonald's</h1>
+        </hgroup>
     </header>
 
-@RenderBody()
+    <main>
+        <h2>Login</h2>
+        <form method="GET" action="dashboard.html">
 
-<footer>
+            <div>
+                <label for="email">E-mail</label>
+                <br />
+                <input id="email" type="email" />
+            </div>
+
+            <div>
+                <label for="senha">Senha</label>
+                <br />
+                <input id="senha" type="password" />
+            </div>
+
+            <input type="submit" value="Entrar!" />
+        </form>
+
+    </main>
+
+    <footer>
         <div class="section-container">
             <address>
                 Avenida de Limeira, 539 - Campos Elíseos - SP
@@ -66,10 +72,9 @@
                 <br />
                 11 1234 6789
             </address>
-            <a href="#">Voltar para o topo!</a>
         </div>
     </footer>
-    <!--abrir/fechar menu mobile-->
+
     <script>
         function toggleMobileMenu() {
             var ul = document.querySelector("nav ul");
@@ -102,4 +107,3 @@
 </body>
 
 </html>
-
