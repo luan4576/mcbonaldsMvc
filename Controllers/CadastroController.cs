@@ -1,16 +1,19 @@
 using System;
 using mcbonaldsMvc.Models;
+using mcbonaldsMvc.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace mcbonaldsMvc.Controllers {
     public class CadastroController : Controller {
+
+        ClienteRepository clienteRepository = new ClienteRepository();
         public IActionResult Index () {
             return View ();
         }
 
         public IActionResult CadastrarCliente (IFormCollection form) {
-            ViewData["Acction"] = "Cadastro";
+            ViewData["Action"] = "Cadastro";
             try{
             Cliente cliente = new Cliente (form["nome"],
                 form["endereço"],
@@ -19,7 +22,9 @@ namespace mcbonaldsMvc.Controllers {
                 form["email"],
                 DateTime.Parse (form["data-nascimento"]));
 
-            System.Console.WriteLine (form["nome"]);
+                clienteRepository.Inserir(cliente);
+
+
             return View ("Sucesso");
             }
             catch(Exception e)
