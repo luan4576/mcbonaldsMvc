@@ -1,33 +1,39 @@
 using System;
+using mcbonaldsMvc.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace mcbonaldsMvc.Controllers
-{
-    public class ClienteController : Controller
-    {
+namespace mcbonaldsMvc.Controllers {
+    public class ClienteController : Controller {
+
+        private ClienteRepository clienteRepositry = new ClienteRepository();
         [HttpGet]
-        public IActionResult Login()
-        {
-            return View();
+        public IActionResult Login () {
+            return View ();
         }
 
         [HttpPost]
-        public IActionResult Login(IFormCollection form)
-        {
-            ViewData["Action"]="Login";
-            try{
+        public IActionResult Login (IFormCollection form) {
+            ViewData["Action"] = "Login";
+            try {
 
-System.Console.WriteLine("===============");
-System.Console.WriteLine(form["email"]);
-System.Console.WriteLine(form ["senha"]);
-System.Console.WriteLine("===============");
+                System.Console.WriteLine ("===============");
+                System.Console.WriteLine (form["email"]);
+                System.Console.WriteLine (form["senha"]);
+                System.Console.WriteLine ("===============");
 
-            return View("Sucesso");
-            }
-            catch(Exception e){
-                System.Console.WriteLine(e.StackTrace);
-                return View("erro");
+                var usuario = form["email"];
+                var senha = form ["senha"];
+
+                clienteRepositry.ObterPor(usuario);
+
+
+
+
+                return View ("Sucesso");
+            } catch (Exception e) {
+                System.Console.WriteLine (e.StackTrace);
+                return View ("erro");
             }
         }
     }
