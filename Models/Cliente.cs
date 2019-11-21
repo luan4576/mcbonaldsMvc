@@ -17,7 +17,7 @@ namespace mcbonaldsMvc.Models
             this.Endereco=endereco;
             this.Telefone=telefone;
             this.Senha=senha;
-            this.Email=Email;
+            this.Email=email;
             this.DataNascimento=dataNascimento;
         }
 

@@ -36,7 +36,7 @@ namespace mcbonaldsMvc.Controllers
             shake.Nome = nomeShake;
             shake.Preco = shakeRepository.ObterPrecoDe(nomeShake);
 
-            pedido.shake = shake;
+            pedido.Shake = shake;
 
 
             var nomeHamburguer = form["hamburguer"];

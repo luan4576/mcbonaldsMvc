@@ -4,7 +4,7 @@ using mcbonaldsMvc.Models;
 
 namespace mcbonaldsMvc.Repositories
 {
-    public class ClienteRepository
+    public class ClienteRepository : RepositoryBase
     {
         private const string PATH = "Database/cliente.csv";
         public ClienteRepository()
@@ -50,24 +50,5 @@ namespace mcbonaldsMvc.Repositories
                 return $"nome={cliente.Nome};endereço={cliente.Endereco};telefone={cliente.Telefone};senha={cliente.Senha};email={cliente.Email};data_nascimento={cliente.DataNascimento}";
             }
 
-            public string ExtrairValorDoCampo(string nomeCampo, string linha)
-            {
-                var chave = nomeCampo;
-                var indiceChave = linha.IndexOf(chave);
-                var indiceTerminal = linha.IndexOf (";", indiceChave);
-                var valor = "";
-
-                if(indiceTerminal != -1)
-                {
-                    valor = linha.Substring(indiceChave, indiceTerminal -indiceChave);
-                }
-                else
-                {
-                    valor =linha.Substring(indiceChave);
-                }
-
-                System.Console.WriteLine($"Campo:{nomeCampo} tem valor {valor}");
-                return valor.Replace(nomeCampo + "=", "");
-            }
     }
 }
