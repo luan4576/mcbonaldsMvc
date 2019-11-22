@@ -6,12 +6,13 @@ namespace mcbonaldsMvc.Repositories
             {
                 var chave = nomeCampo;
                 var indiceChave = linha.IndexOf(chave);
-                var indiceTerminal = linha.IndexOf (";", indiceChave);
+
+                var indiceTerminal = linha.IndexOf(";", indiceChave);
                 var valor = "";
 
                 if(indiceTerminal != -1)
                 {
-                    valor = linha.Substring(indiceChave, indiceTerminal -indiceChave);
+                    valor = linha.Substring(indiceChave, indiceTerminal - indiceChave);
                 }
                 else
                 {

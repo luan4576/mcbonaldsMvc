@@ -7,12 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace mcbonaldsMvc.Controllers
 {
-    public class PedidoController : Controller
+    public class PedidoController : AbstractController
     {
 
         PedidoRepository pedidoRepository = new PedidoRepository();
         HamburguerRepository hamburguerRepository = new HamburguerRepository();
         ShakeRepository shakeRepository = new ShakeRepository();
+        ClienteRepository clienteRepository = new ClienteRepository();
         public IActionResult Index()
         {
             var hamburguers = hamburguerRepository.ObterTodos();
@@ -23,6 +24,20 @@ namespace mcbonaldsMvc.Controllers
             pedido.Hamburguers = hamburguers;
             pedido.Shakes = shakes;
 
+            var usuarioLogado = ObterUsuarioSession();
+            var nomeUsuarioLogado = ObterUsuarioNomeSession();
+            if(!string.IsNullOrEmpty(nomeUsuarioLogado))
+            {
+                pedido.NomeUsuario = nomeUsuarioLogado;
+            }
+
+                var clienteLogado = clienteRepository.ObterPor(usuarioLogado);
+                if(clienteLogado !=null)
+                {
+                    pedido.cliente = clienteLogado;
+                }
+
+                pedido.NomeUsuario = ObterUsuarioNomeSession();
 
             return View(pedido);
         }

@@ -4,7 +4,7 @@ using mcbonaldsMvc.Models;
 
 namespace mcbonaldsMvc.Repositories
 {
-    public class HamburguerRepository
+    public class HamburguerRepository 
     {
         private const string PATH = "Database/Hamburguer.csv";
         public HamburguerRepository()
