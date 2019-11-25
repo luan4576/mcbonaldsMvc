@@ -3,7 +3,7 @@ using mcbonaldsMvc.Models;
 
 namespace mcbonaldsMvc.ViewModels
 {
-    public class PedidoViewModel
+    public class PedidoViewModel : BaseViewModel
     {
         public List<Hamburguer> Hamburguers {get;set;}
 

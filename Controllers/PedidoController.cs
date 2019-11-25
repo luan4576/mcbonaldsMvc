@@ -37,9 +37,11 @@ namespace mcbonaldsMvc.Controllers
                     pedido.cliente = clienteLogado;
                 }
 
-                pedido.NomeUsuario = ObterUsuarioNomeSession();
 
-            return View(pedido);
+                pedido.NomeUsuario ="Pedido";
+                pedido.UsuarioEmail = ObterUsuarioSession();
+                pedido.UsuarioNome = ObterUsuarioNomeSession();
+                return View(pedido);
         }
 
         public IActionResult Registrar(IFormCollection form)
@@ -73,11 +75,28 @@ namespace mcbonaldsMvc.Controllers
 
             pedido.PrecoTotal = hamburguer.Preco + shake.Preco;
 
-            pedidoRepository.Inserir(pedido);
+            if(pedidoRepository.Inserir(pedido))
+            {
+
+            return View("Sucesso", new RespostaViewModel()
+            {
+                Mensagem = "Aguarde a aprovaçao dos nossos administradores",
+                NomeView = "Sucesso",
+                UsuarioEmail = ObterUsuarioSession(),
+                UsuarioNome = ObterUsuarioNomeSession()
+            });
+            }
+            else{
+                return View("Erro", new RespostaViewModel()
+            {
+                Mensagem = "Houve um erro ao processar seu pedido. Tente novamente",
+                NomeView = "Erro",
+                UsuarioEmail = ObterUsuarioSession(),
+                UsuarioNome = ObterUsuarioNomeSession()
+            });
+            }
 
             
-
-            return View("Sucesso");
         }
     }
 }
