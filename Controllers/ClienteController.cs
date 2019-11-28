@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace mcbonaldsMvc.Controllers {
     public class ClienteController : AbstractController {
 
-        private ClienteRepository clienteRepositry = new ClienteRepository();
+        private ClienteRepository clienteRepository = new ClienteRepository();
         private PedidoRepository pedidoRepository = new PedidoRepository();
         [HttpGet]
         public IActionResult Login () {
@@ -35,7 +35,7 @@ namespace mcbonaldsMvc.Controllers {
                 var usuario = form["email"];
                 var senha = form ["senha"];
 
-                var cliente = clienteRepositry.ObterPor(usuario);
+                var cliente = clienteRepository.ObterPor(usuario);
 
                 if (cliente != null)
                 {

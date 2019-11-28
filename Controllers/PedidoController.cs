@@ -98,5 +98,10 @@ namespace mcbonaldsMvc.Controllers
 
             
         }
+
+        public IActionResult Aprovar(ulong id)
+        {
+            Pedido pedido  = pedidoRepository.ObterPor(id);
+        }
     }
 }
