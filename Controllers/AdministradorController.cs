@@ -12,6 +12,10 @@ namespace mcbonaldsMvc.Controllers
         [HttpGet]
         public IActionResult DashBoard()
         {
+            var tipoUsuarioSessao = uint.Parse(ObterUsuarioTipoSession());
+            if(tipoUsuarioSessao.Equals( (uint) tipoUsuario.ADMINISTRADOR))
+            {
+
             var pedidos = pedidoRepository.ObterTodos();
             DashboardViewModel dashboardViewModel = new DashboardViewModel();
 
@@ -37,8 +41,13 @@ namespace mcbonaldsMvc.Controllers
             dashboardViewModel.UsuarioEmail = ObterUsuarioSession();
 
             return View(dashboardViewModel);
-
-        
+            }
+            return View("Erro",new RespostaViewModel()
+            {
+                NomeView ="Dashboard",
+                Mensagem = "so administrador"
+            })
         }
+        
     }
 }

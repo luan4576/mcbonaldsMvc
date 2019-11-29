@@ -1,4 +1,5 @@
 using System;
+using mcbonaldsMvc.Enums;
 using mcbonaldsMvc.Repositories;
 using mcbonaldsMvc.ViewModels;
 using Microsoft.AspNetCore.Http;
@@ -41,11 +42,19 @@ namespace mcbonaldsMvc.Controllers {
                 {
                     if(cliente.Senha.Equals(senha))
                     {
+                        switch(cliente.TipoUsuario)
+                        {
+                            case (uint) TiposUsuario.CLIENTE:
                         HttpContext.Session.SetString(SESSION_CLIENTE_EMAIL, usuario);
                         HttpContext.Session.SetString(SESSION_CLIENTE_NOME, cliente.Nome);
-                    
-
-                        return RedirectToAction("Historico","Cliente");
+                         HttpContext.Session.SetString(SESSION_CLIENTE_USUARIO, cliente.TipoUsuario.ToString());
+                          return RedirectToAction("Historico","Cliente");
+                            default:
+                            HttpContext.Session.SetString(SESSION_CLIENTE_EMAIL, usuario);
+                            HttpContext.Session.SetString(SESSION_CLIENTE_NOME, cliente.Nome);
+                            HttpContext.Session.SetString(SESSION_CLIENTE_USUARIO, cliente.TipoUsuario.ToString());
+                            return RedirectToAction("Dashboard","Administrador");
+                        }
                     }
                     else
                     {

@@ -21,6 +21,8 @@ namespace mcbonaldsMvc.Models
             this.DataNascimento=dataNascimento;
         }
 
+
+        public uint TipoUsuario {get;set;}
         public Cliente()
         {
         }

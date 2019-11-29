@@ -1,2 +1,1 @@
-nome=lixo;endereco=;telefone=12345678;senha=12345678;email=lixo@123;data_nascimento=01/11/2019 00:00:00
-nome=luan souza;endereco=;telefone=12345678;senha=123456;email=luansouza@luan.com;data_nascimento=01/11/2019 00:00:00
+tipo_usuario=0;nome=Administrador;email=admin@email.com;senha=123123;endereco=;telefone=;data_nascimento=
